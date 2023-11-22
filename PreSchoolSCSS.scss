@@ -8,6 +8,7 @@
   --color-md-light: #add8e6; /* Light Blue */
   --color-md-dark: #800080; /* Purple */
   --color-primary: #ff6384; /* Pink */
+  --color-primary-dark: #e05774; /* Darkened Pink */
   --color-info: #36a2eb; /* Bright Blue */
   --color-success: #28a745; /* Green */
   --color-danger: #dc3545; /* Red */
@@ -113,12 +114,12 @@ button {
   background-color: var(--color-primary);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: darken(var(--color-primary), 10%);
+  background-color: var(--color-primary-dark);
 }
