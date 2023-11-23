@@ -1,4 +1,5 @@
 @import "./PreSchoolSCSS-navbar.scss";
+@import "./PreSchoolSCSS-footer.scss";
 
 /* Define custom properties */
 :root {
@@ -116,13 +117,41 @@ button {
   background-color: var(--color-primary);
   color: white;
   border: none;
+  font-size: 1.2em;
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 0.5em 1em;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 button:hover {
   background-color: var(--color-dark);
   color: var(--color-light);
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Color Grid Styles */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 1.5em;
+  padding: 1em;
+}
+
+.color-grid > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: var(--font-size-base);
+  color: var(--color-dark);
+  transition: transform 0.3s ease;
+}
+
+.color-grid > div:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
 }

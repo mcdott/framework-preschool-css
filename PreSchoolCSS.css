@@ -39,6 +39,7 @@
 .navbar a:hover {
   background-color: var(--color-dark);
   color: var(--color-light);
+  transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
 /* Navbar Title */
@@ -49,6 +50,52 @@
   letter-spacing: 0.1em;
   margin-bottom: 0;
   padding: 0 1em;
+}
+
+/* Footer */
+.page-footer {
+  background-color: var(--color-md-light);
+  color: var(--color-dark);
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  flex-wrap: wrap;
+}
+
+.page-footer h1,
+.page-footer h2,
+.page-footer h3,
+.page-footer h4,
+.page-footer h5,
+.page-footer h6 {
+  color: var(--color-primary);
+  margin: 0.5em 0;
+}
+
+.page-footer > ul {
+  margin: 0;
+  padding: 0;
+  padding: 1em;
+  list-style-type: none;
+  flex-basis: 100%;
+}
+
+.page-footer a {
+  color: var(--color-success);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.page-footer a:link {
+  color: var(--color-success);
+}
+
+.page-footer a:hover {
+  color: var(--color-dark);
+}
+
+.page-footer a:active {
+  color: var(--color-info);
 }
 
 /* Define custom properties */
@@ -170,15 +217,43 @@ button {
   background-color: var(--color-primary);
   color: white;
   border: none;
+  font-size: 1.2em;
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 0.5em 1em;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 button:hover {
   background-color: var(--color-dark);
   color: var(--color-light);
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Color Grid Styles */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 1.5em;
+  padding: 1em;
+}
+
+.color-grid > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: var(--font-size-base);
+  color: var(--color-dark);
+  transition: transform 0.3s ease;
+}
+
+.color-grid > div:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
 /*# sourceMappingURL=PreSchoolCSS.css.map */
