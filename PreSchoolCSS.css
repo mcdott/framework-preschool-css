@@ -286,6 +286,45 @@ label textarea {
   transform: translateX(32px); /* Move toggle to the right */
 }
 
+/* Control Checkbox */
+.control-checkbox {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+.control-checkbox input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.control-checkbox span {
+  position: relative;
+  height: 48px;
+  width: 48px;
+  background-color: var(--color-md-light);
+  border-radius: 10px;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+}
+.control-checkbox span:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 18px;
+  top: 9px;
+  width: 10px;
+  height: 20px;
+  border: solid white;
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+}
+.control-checkbox input:checked + span {
+  background-color: var(--color-success);
+}
+.control-checkbox input:checked + span:after {
+  display: block;
+}
+
 /* Buttons */
 button {
   background-color: var(--color-primary);

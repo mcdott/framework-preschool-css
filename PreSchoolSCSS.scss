@@ -191,6 +191,50 @@ label textarea {
   }
 }
 
+/* Control Checkbox */
+.control-checkbox {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  span {
+    position: relative;
+    height: 48px;
+    width: 48px;
+    background-color: var(--color-md-light);
+    border-radius: 10px;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 18px;
+      top: 9px;
+      width: 10px;
+      height: 20px;
+      border: solid white;
+      border-width: 0 4px 4px 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  input:checked + span {
+    background-color: var(--color-success);
+
+    &:after {
+      display: block;
+    }
+  }
+}
+
 /* Buttons */
 button {
   background-color: var(--color-primary);
