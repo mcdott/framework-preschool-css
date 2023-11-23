@@ -1,0 +1,45 @@
+/* Footer */
+.page-footer {
+  background-color: var(--color-md-light);
+  color: var(--color-dark);
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  flex-wrap: wrap;
+}
+
+.page-footer h1,
+.page-footer h2,
+.page-footer h3,
+.page-footer h4,
+.page-footer h5,
+.page-footer h6 {
+  color: var(--color-primary);
+  margin: 0.5em 0;
+}
+
+.page-footer > ul {
+  margin: 0;
+  padding: 0;
+  padding: 1em;
+  list-style-type: none;
+  flex-basis: 100%;
+}
+
+.page-footer a {
+  color: var(--color-success);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.page-footer a:link {
+  color: var(--color-success);
+}
+
+.page-footer a:hover {
+  color: var(--color-dark);
+}
+
+.page-footer a:active {
+  color: var(--color-info);
+}

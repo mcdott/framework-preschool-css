@@ -1,0 +1,280 @@
+@import "./PreSchoolSCSS-navbar.scss";
+@import "./PreSchoolSCSS-footer.scss";
+
+/* Define custom properties */
+:root {
+  /* Colors */
+  --color-background: #f8f9fa; /* Light Grey */
+  --color-foreground: #333333; /* Dark Grey for primary text */
+  --color-dark: #0056b3; /* Deep Blue */
+  --color-light: #f0e68c; /* Pale Yellow */
+  --color-md-light: #add8e6; /* Light Blue */
+  --color-md-dark: #800080; /* Purple */
+  --color-primary: #ff6384; /* Pink */
+  --color-primary-dark: #e05774; /* Darkened Pink */
+  --color-info: #36a2eb; /* Bright Blue */
+  --color-success: #28a745; /* Green */
+  --color-danger: #dc3545; /* Red */
+  --color-callout: #ffcd56; /* Yellow */
+  --color-lightest: #ffffff; /* White */
+
+  /* Font Sizes */
+  --font-size-base: 24px;
+  --font-size-h1: 38px;
+  --font-size-h2: 34px;
+  --font-size-h3: 30px;
+  --font-size-h4: 26px;
+  --font-size-h5: 24px;
+  --font-size-h6: 22px;
+
+  /* Spacing */
+  --line-height-base: 1.5;
+  --spacing-base: 1em;
+}
+
+body {
+  font-family: "Baloo 2", sans-serif;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: var(--spacing-base);
+  margin-bottom: var(--spacing-base);
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+}
+h2 {
+  font-size: var(--font-size-h2);
+}
+h3 {
+  font-size: var(--font-size-h3);
+}
+h4 {
+  font-size: var(--font-size-h4);
+}
+h5 {
+  font-size: var(--font-size-h5);
+}
+h6 {
+  font-size: var(--font-size-h6);
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+
+strong {
+  font-weight: bold;
+  color: var(--color-accent);
+}
+
+em {
+  font-style: italic;
+  color: var(--color-secondary);
+}
+
+abbr {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+code {
+  font-family: "Courier New", monospace;
+  background-color: #f4f4f4;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+/* Form Styles */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  border: 5px solid var(--color-md-light);
+  border-radius: 25px;
+  padding: 1em;
+  font-size: var(--font-size-base);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  border: 5px solid var(--color-md-light);
+  border-radius: 25px;
+}
+
+label {
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+  padding: 0.5em;
+}
+
+label > span {
+  margin: 1em;
+}
+
+label textarea {
+  border: 5px solid var(--color-md-light);
+  border-radius: 25px;
+  padding: 1em;
+  font-size: var(--font-size-base);
+}
+
+/* Toggle Switch */
+.switch {
+  display: flex;
+  flex-direction: column;
+}
+
+.switch-2 {
+  display: inline-block;
+  position: relative;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  div {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-md-light);
+    transition: background-color 0.4s;
+    border-radius: 25px;
+    width: 62px;
+    height: 32px;
+
+    div {
+      position: absolute;
+      height: 26px;
+      width: 26px;
+      border-radius: 50%; /* Circle */
+      left: 2px;
+      bottom: 2px;
+      top: 2px;
+      right: 2px;
+      background-color: var(--color-light);
+      transition: transform 0.4s;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  input:checked + div {
+    background-color: var(--color-success); /* For on state */
+
+    div {
+      transform: translateX(32px); /* Move toggle to the right */
+    }
+  }
+}
+
+/* Control Checkbox */
+.control-checkbox {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  span {
+    position: relative;
+    height: 48px;
+    width: 48px;
+    background-color: var(--color-md-light);
+    border-radius: 10px;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 18px;
+      top: 9px;
+      width: 10px;
+      height: 20px;
+      border: solid white;
+      border-width: 0 4px 4px 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  input:checked + span {
+    background-color: var(--color-success);
+
+    &:after {
+      display: block;
+    }
+  }
+}
+
+/* Buttons */
+button {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  font-size: 1.2em;
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Color Grid Styles */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 1.5em;
+  padding: 1em;
+}
+
+.color-grid > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: var(--font-size-base);
+  color: var(--color-dark);
+  transition: transform 0.3s ease;
+}
+
+.color-grid > div:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
