@@ -325,6 +325,27 @@ href=&quot;#&quot;&gt;links&lt;/a&gt; to show off their styles in context.&lt;/p
         </div>
       </section>
 
+      <div>
+        <h2>Web Components</h2>
+        <h4>Counter 1:</h4>
+        <fancy-counter value="5"></fancy-counter>
+        <h4>Counter 2:</h4>
+        <fancy-counter value="0" min="-5" max="5"></fancy-counter>
+      </div>
+
+      <script src="fancy-counter.js"></script>
+
+      <script>
+        // Listen for events from your component
+        // This component dispatches a change event when the value changes
+        document
+          .querySelector("fancy-counter")
+          .addEventListener("change", (e) => {
+            console.log("fancy counter changed");
+            console.log(e.target._value);
+          });
+      </script>
+
       <!-- --------------------------- -->
       <!-- Footer Styles -->
       <section id="footers">
