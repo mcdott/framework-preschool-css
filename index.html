@@ -328,9 +328,9 @@ href=&quot;#&quot;&gt;links&lt;/a&gt; to show off their styles in context.&lt;/p
       <div>
         <h2>Web Components</h2>
         <h4>Counter 1:</h4>
-        <fancy-counter value="5"></fancy-counter>
+        <fancy-counter value="1" min="0" max="5"></fancy-counter>
         <h4>Counter 2:</h4>
-        <fancy-counter value="0" min="-5" max="5"></fancy-counter>
+        <fancy-counter value="1" min="0" max="5"></fancy-counter>
       </div>
 
       <script src="fancy-counter.js"></script>
@@ -345,6 +345,9 @@ href=&quot;#&quot;&gt;links&lt;/a&gt; to show off their styles in context.&lt;/p
             console.log(e.target._value);
           });
       </script>
+      <h4>Number Line:</h4>
+      <number-line sum="5"></number-line>
+      <script src="number-line.js"></script>
 
       <!-- --------------------------- -->
       <!-- Footer Styles -->
