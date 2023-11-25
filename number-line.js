@@ -3,7 +3,7 @@ class NumberLine extends HTMLElement {
           :host {
               display: block;
               width: 60px;
-              height: 500px;
+              height: 525px;
               background: var(--fill-color, #28a745);
               border-radius: 0.75em;
               border: 5px solid #add8e6;

@@ -369,4 +369,26 @@ button:hover {
   transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
+.addition-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1em;
+}
+
+.number-line-numbers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 0%;
+}
+
+.number-line-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+}
+
 /*# sourceMappingURL=PreSchoolCSS.css.map */

@@ -324,13 +324,30 @@ href=&quot;#&quot;&gt;links&lt;/a&gt; to show off their styles in context.&lt;/p
 				</pre>
         </div>
       </section>
-
-      <div>
-        <h2>Web Components</h2>
-        <h4>Counter 1:</h4>
+      <!-- --------------------------- -->
+      <!-- Web Components -->
+      <h2>Web Components</h2>
+      <div class="addition-container">
         <fancy-counter value="1" min="0" max="5"></fancy-counter>
-        <h4>Counter 2:</h4>
+        <h4>+</h4>
         <fancy-counter value="1" min="0" max="5"></fancy-counter>
+        <h4>=</h4>
+        <div class="number-line-container">
+          <div class="number-line-numbers">
+            <h4>10-</h4>
+            <h4>9-</h4>
+            <h4>8-</h4>
+            <h4>7-</h4>
+            <h4>6-</h4>
+            <h4>5-</h4>
+            <h4>4-</h4>
+            <h4>3-</h4>
+            <h4>2-</h4>
+            <h4>1-</h4>
+            <h4>0-</h4>
+          </div>
+          <number-line sum="5"></number-line>
+        </div>
       </div>
 
       <script src="fancy-counter.js"></script>
@@ -345,9 +362,24 @@ href=&quot;#&quot;&gt;links&lt;/a&gt; to show off their styles in context.&lt;/p
             console.log(e.target._value);
           });
       </script>
-      <h4>Number Line:</h4>
-      <number-line sum="5"></number-line>
+
       <script src="number-line.js"></script>
+
+      <!-- TODO fix this to add the values of the two counters as the sum, and to update the number line display -->
+      <script>
+        document.querySelectorAll("fancy-counter").forEach((counter) => {
+          counter.addEventListener("change", (e) => {
+            console.log("fancy counter changed");
+            console.log(e.target.getAttribute("value")); // Get the valuefrom the fancy-counter
+            let counterValue = e.target.getAttribute("value");
+            // Find the number-line element
+            let numberLine = document.querySelector("number-line"); // Set the sum attribute of number-line
+            if (numberLine) {
+              numberLine.setAttribute("sum", counterValue);
+            }
+          });
+        });
+      </script>
 
       <!-- --------------------------- -->
       <!-- Footer Styles -->
