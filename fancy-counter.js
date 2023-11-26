@@ -106,8 +106,16 @@ class FancyCounter extends HTMLElement {
   }
 
   _update() {
+    // Update the display
     this._display.innerHTML = this._value;
-    this.setAttribute("value", this._value);
+
+    // Update the value attribute only if it's different
+    const currentValue = parseInt(this.getAttribute("value"));
+    if (currentValue !== this._value) {
+      this.setAttribute("value", this._value);
+    }
+
+    // Dispatch the change event
     this.dispatchEvent(new Event("change"));
   }
 
@@ -118,15 +126,15 @@ class FancyCounter extends HTMLElement {
 
   // Handle changes to attributes
   attributeChangedCallback(name, oldValue, newValue) {
-    if (name === "value") {
+    if (name === "value" && this._value !== parseInt(newValue)) {
       this._value = parseInt(newValue);
-      this._update();
+      this._display.innerHTML = this._value; // Update display directly
     } else if (name === "min") {
       this._min = parseInt(newValue);
     } else if (name === "max") {
       this._max = parseInt(newValue);
     } else if (name === "step") {
-      this._step = newValue;
+      this._step = parseInt(newValue);
     }
   }
 
