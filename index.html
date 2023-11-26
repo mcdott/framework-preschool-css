@@ -328,58 +328,57 @@ href=&quot;#&quot;&gt;links&lt;/a&gt; to show off their styles in context.&lt;/p
       <!-- Web Components -->
       <h2>Web Components</h2>
       <div class="addition-container">
-        <fancy-counter value="1" min="0" max="5"></fancy-counter>
+        <fancy-counter
+          id="first-addend"
+          value="1"
+          min="0"
+          max="5"
+        ></fancy-counter>
         <h4>+</h4>
-        <fancy-counter value="1" min="0" max="5"></fancy-counter>
+        <fancy-counter
+          id="second-addend"
+          value="1"
+          min="0"
+          max="5"
+        ></fancy-counter>
         <h4>=</h4>
-        <div class="number-line-container">
-          <div class="number-line-numbers">
-            <h4>10-</h4>
-            <h4>9-</h4>
-            <h4>8-</h4>
-            <h4>7-</h4>
-            <h4>6-</h4>
-            <h4>5-</h4>
-            <h4>4-</h4>
-            <h4>3-</h4>
-            <h4>2-</h4>
-            <h4>1-</h4>
-            <h4>0-</h4>
-          </div>
-          <number-line sum="5"></number-line>
-        </div>
+        <number-line sum="5"></number-line>
       </div>
 
       <script src="fancy-counter.js"></script>
 
       <script>
-        // Listen for events from your component
-        // This component dispatches a change event when the value changes
-        document
-          .querySelector("fancy-counter")
-          .addEventListener("change", (e) => {
-            console.log("fancy counter changed");
-            console.log(e.target._value);
-          });
-      </script>
-
-      <script src="number-line.js"></script>
-
-      <!-- TODO fix this to add the values of the two counters as the sum, and to update the number line display -->
-      <script>
+        // Add event listeners to both fancy counters
         document.querySelectorAll("fancy-counter").forEach((counter) => {
           counter.addEventListener("change", (e) => {
             console.log("fancy counter changed");
-            console.log(e.target.getAttribute("value")); // Get the valuefrom the fancy-counter
-            let counterValue = e.target.getAttribute("value");
-            // Find the number-line element
-            let numberLine = document.querySelector("number-line"); // Set the sum attribute of number-line
-            if (numberLine) {
-              numberLine.setAttribute("sum", counterValue);
-            }
+            console.log(e.target.getAttribute("value")); // Log the value of the changed counter
+            updateNumberLine(); // Update the number line whenever any counter changes
           });
         });
+
+        // Function to update the number line with the sum of both counters
+        function updateNumberLine() {
+          // Get the current values of both counters
+          const firstValue = parseInt(
+            document.querySelector("#first-addend").getAttribute("value")
+          );
+          const secondValue = parseInt(
+            document.querySelector("#second-addend").getAttribute("value")
+          );
+
+          // Calculate the sum
+          const sum = firstValue + secondValue;
+
+          // Find the number-line element and set its sum attribute
+          const numberLine = document.querySelector("number-line");
+          if (numberLine) {
+            numberLine.setAttribute("sum", sum);
+          }
+        }
       </script>
+
+      <script src="number-line.js"></script>
 
       <!-- --------------------------- -->
       <!-- Footer Styles -->

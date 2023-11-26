@@ -107,10 +107,11 @@ class FancyCounter extends HTMLElement {
 
   _update() {
     this._display.innerHTML = this._value;
+    this.setAttribute("value", this._value);
     this.dispatchEvent(new Event("change"));
   }
 
-  // Tell this component it should look for changes to time
+  // Tell this component it should look for changes to value, min, max, and step
   static get observedAttributes() {
     return ["value", "min", "max", "step"];
   }
@@ -141,15 +142,3 @@ class FancyCounter extends HTMLElement {
 }
 
 customElements.define("fancy-counter", FancyCounter);
-
-/*
-
-- Challenge - 1 - 
-
-You need to include this component in your framework. 
-It needs to have a style that matches the styles of your 
-framework. 
-
-Modify the styles in code here to styles that would fit your framework. 
-
-*/
