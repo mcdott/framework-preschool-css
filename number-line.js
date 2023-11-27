@@ -31,13 +31,20 @@ class NumberLine extends HTMLElement {
           overflow: hidden;
         }
 
-        .fill {
+        .fill-first {
           width: 100%;
           height: 0%;
           background: var(--color-lightest, #ffffff);
           transition: height 0.5s;
         }
-      </style>
+
+        .fill-second {
+          width: 100%;
+          height: 0%;
+          background: red;
+          transition: height 0.5s;
+        }
+        </style>
       <div class="container">
         <div class="number-labels">
           <h4>10 -</h4>
@@ -53,16 +60,17 @@ class NumberLine extends HTMLElement {
           <h4>0 -</h4>
         </div>
         <div class="outline">
-          <div class="fill"></div>
+          <div class="fill-first"></div>
+          <div class="fill-second"></div>
         </div>
       </div>
     `;
     return template;
   }
 
-  // Look for changes to the "sum" attribute
+  // Look for changes to the "first-value" and "second-value" attributes
   static get observedAttributes() {
-    return ["sum"];
+    return ["first-value", "second-value"];
   }
 
   constructor() {
@@ -73,18 +81,18 @@ class NumberLine extends HTMLElement {
     this._shadowRoot = this.attachShadow({ mode: "open" });
     this._shadowRoot.appendChild(tempNode);
 
-    this._shadowRoot.querySelector(".fill").style.height = `${
-      100 - this.sum * 10
+    this._shadowRoot.querySelector(".fill-first").style.height = `${
+      100 - this.firstValue * 10
     }%`;
   }
 
-  get sum() {
-    const value = this.getAttribute("sum");
+  get firstValue() {
+    const value = this.getAttribute("first-value");
     return Number(value);
   }
 
-  set sum(value) {
-    this.setAttribute("sum", value);
+  set firstValue(value) {
+    this.setAttribute("first-value", value);
   }
 
   connectedCallback() {
@@ -93,14 +101,16 @@ class NumberLine extends HTMLElement {
   }
 
   updateFillHeight() {
-    const fillHeight = 100 - this.sum * 10;
+    const fillHeight = 100 - this.firstValue * 10;
     console.log("Updating fill height to:", fillHeight + "%");
-    this._shadowRoot.querySelector(".fill").style.height = `${fillHeight}%`;
+    this._shadowRoot.querySelector(
+      ".fill-first"
+    ).style.height = `${fillHeight}%`;
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
     console.log(`Attribute changed: ${name}, from ${oldValue} to ${newValue}`);
-    if (name === "sum") {
+    if (name === "first-value" || name === "second-value") {
       this.updateFillHeight();
     }
   }
