@@ -22,28 +22,36 @@ class NumberLine extends HTMLElement {
         }
 
         .outline {
+          position: relative;
           display: block;
           width: 75px;
           height: 650px;
-          background: var(--fill-color, #28a745);
+          background: var(--color-lightest, #ffffff);
           border-radius: 0.75em;
           border: 5px solid #add8e6;
           overflow: hidden;
         }
 
         .fill-first {
+          position: absolute;
+          bottom: 0; /* Anchor to bottom */
           width: 100%;
           height: 0%;
-          background: var(--color-lightest, #ffffff);
+          background: var(--fill-color, #28a745);
           transition: height 0.5s;
+          z-index: 2; /* Higher z-index */
         }
 
         .fill-second {
+          position: absolute;
+          bottom: 0; /* Anchor to bottom */
           width: 100%;
           height: 0%;
-          background: red;
-          transition: height 0.5s;
+          background: var(--color-light, #f0e68c);
+          transition: height 0.5s, transform 0.5s;
+          z-index: 1;
         }
+        
         </style>
       <div class="container">
         <div class="number-labels">
@@ -82,7 +90,10 @@ class NumberLine extends HTMLElement {
     this._shadowRoot.appendChild(tempNode);
 
     this._shadowRoot.querySelector(".fill-first").style.height = `${
-      100 - this.firstValue * 10
+      this.firstValue * 10
+    }%`;
+    this._shadowRoot.querySelector(".fill-second").style.height = `${
+      (this.firstValue + this.secondValue) * 10
     }%`;
   }
 
@@ -95,17 +106,37 @@ class NumberLine extends HTMLElement {
     this.setAttribute("first-value", value);
   }
 
+  get secondValue() {
+    const value = this.getAttribute("second-value");
+    return Number(value);
+  }
+
+  set secondValue(value) {
+    this.setAttribute("second-value", value);
+  }
+
   connectedCallback() {
     console.log("NumberLine connected to DOM");
     this.updateFillHeight();
   }
 
   updateFillHeight() {
-    const fillHeight = 100 - this.firstValue * 10;
-    console.log("Updating fill height to:", fillHeight + "%");
-    this._shadowRoot.querySelector(
-      ".fill-first"
-    ).style.height = `${fillHeight}%`;
+    const totalHeight = 650; // height of the outline
+    const fillFirstHeight = (this.firstValue / 10) * totalHeight;
+    const fillSecondHeight = (this.secondValue / 10) * totalHeight;
+
+    console.log(
+      "Updating fill height to:",
+      fillFirstHeight + "%",
+      fillSecondHeight + "%"
+    );
+
+    const fillFirstElement = this._shadowRoot.querySelector(".fill-first");
+    const fillSecondElement = this._shadowRoot.querySelector(".fill-second");
+
+    fillFirstElement.style.height = `${fillFirstHeight}px`;
+    fillSecondElement.style.height = `${fillSecondHeight}px`;
+    fillSecondElement.style.transform = `translateY(-${fillFirstHeight}px)`; // smooth the transform animation
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
